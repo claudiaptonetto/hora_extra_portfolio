@@ -1,0 +1,107 @@
+<!--Cria um site para interação com o usuário.-->
+
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta name="viewport" content="initial-scale=1, width=device-width">
+		<title> Hora Extra </title>
+		<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+		
+		
+	</head>
+
+    <body >
+        <h1>Hora Extra</h1>
+        
+        <h2>Apontamento</h2>
+        
+        <div id="app">
+            <div>
+                <form action="http://localhost:4000/cadastro" method="POST">
+                    Nome: <input type="text" name="nome"><br>
+                    <input type="submit" value="Cadastrar">
+                    
+                  </form>
+            </div>
+            <br><br><br>
+
+
+            <div>
+                <form action="http://localhost:4000/inserirDados" method="POST">
+                    
+                    <fieldset>
+                        <legend>Selecione um nome: </legend>
+                        <div v-for="item in itens">
+                            <label for="item">{{item}}</label>
+                        </div>
+
+                    </fieldset>
+                    Nome: <input type="text" name="nome"><br>
+                    Data : <input type="date" name="dataHoraExtra"><br>
+                    Hora Inicial: <input type="time" name="horaInicial"><br>
+                    Hora Final: <input type="time" name="horaFinal"><br>
+                    <input type="submit" value="Registrar">
+                    
+                  </form>
+            </div>
+
+            <br><br><br>
+            <div>
+                <button onclick="chamaFuncao()"> Criar Tabela Excel </button>
+            
+            </div>
+            <div>
+                <table>
+                    <textarea id="resultadoPesquisa">
+    
+                    </textarea>
+                </table>
+            </div>  
+        </div>
+
+        <div>
+            <h1>Teste</h1>
+        </div>
+    
+    
+        <script>
+            function chamaFuncao()
+		    {
+                fetch ('/botao')
+			    .then((response) => response.text())
+    		    .then((text) => {                  
+                    document.getElementById("resultadoPesquisa").value=text
+            });
+		    }
+            
+		    const { createApp } = Vue
+            createApp({
+		    data() {
+			    return {
+				    LISTAGEM:'VAZIO',
+                    itens:[]           
+			}
+		  },
+		  methods: {
+                       		
+		},
+		mounted: function() {
+            this.item=[];
+            fetch("/pegaNome")
+            .then(response => response.json())
+            .then(json => {
+                for (var a=0;a<json.length;a++)
+                {
+                    test = json[a];
+                    this.itens.push(test.toString());          
+                }
+              
+            });
+  		}
+		}).mount('#app')
+        </script>
+        
+    </body>
+</html>
