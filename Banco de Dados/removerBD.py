@@ -1,6 +1,4 @@
-
 #Comando na linguagem Python para remover o banco de dados.
-
 import mysql.connector
 
 mydb = mysql.connector.connect(
@@ -9,8 +7,6 @@ mydb = mysql.connector.connect(
   password="senha",
   auth_plugin='mysql_native_password',  
 )
-
-
 
 mycursor = mydb.cursor()
 

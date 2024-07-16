@@ -1,7 +1,4 @@
-
-
 #Comando na linguagem Python para a criação de tabelas no SQL
-
 import mysql.connector
 
 mydb = mysql.connector.connect(

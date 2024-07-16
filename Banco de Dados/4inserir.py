@@ -1,6 +1,4 @@
-
 #Comando na linguagem Python para inserir dados na tabela criada.
-
 import mysql.connector
 
 mydb = mysql.connector.connect(

@@ -1,6 +1,4 @@
-
 #Comando na linguagem Python para a modificar a chave estrangeira da tabela no SQL
-
 import mysql.connector
 
 mydb = mysql.connector.connect(

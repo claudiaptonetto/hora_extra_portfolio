@@ -1,3 +1,4 @@
+#Programa Principal em Python
 from flask import Flask, render_template, redirect, request, session, send_file
 # The Session instance is not used for direct access, you should always use flask.session
 from flask_session import Session
@@ -14,9 +15,9 @@ import xlsxwriter
 mydb = mysql.connector.connect(
   host="localhost",
   user="root",
-  password="python",
+  password="senha",
   auth_plugin='mysql_native_password',
-  database="tonetto"
+  database="nome"
 )
 
 app = Flask(__name__,
